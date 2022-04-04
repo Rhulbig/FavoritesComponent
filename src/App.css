@@ -1,38 +1,1014 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+:root {
+	--navbarBg: #34475c;
+	--navbarIcon: #91ca96;
+	--navbarActive: #232830;
+	--lightBgMain: #ebeff5;
+	--accentBlueGreyColor: #617489;
+	--accentFontColor: #92b3d8;
+	--darkerBlueGreyColor: #546475;
+	--declineRed: #eb5757;
+	--blueButtonColor: #4d7bf3;
+	--blueButtonColorHover: #3c62c2;
+}
+/* Alert */
+.alertContainerSuccess {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 50vw;
+	padding: 0.4rem 1rem;
+	background: #fff;
+	color: var(--navbarIcon);
+	z-index: 10;
+	border-radius: 5px;
+	top: 5rem;
+	transform: translateX(-50%);
+}
+.alertContainerError {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 50vw;
+	padding: 0.4rem 1rem;
+	background: #fff;
+	color: var(--declineRed);
+	z-index: 10;
+	border-radius: 5px;
+	top: 5rem;
+	transform: translateX(-50%);
+}
+.alertContainerInner {
+	display: flex;
+	align-items: center;
+}
+.alert {
+	background: black;
+	color: white;
+	height: 5rem;
+	top: 0;
+	z-index: 100;
+}
+.alertIcon {
+	margin: 0 0.5rem 0 0;
+}
+button {
+	border: none;
+	outline: none;
+}
+button:focus {
+	border: none;
+	outline: none;
+}
+#slide {
+	position: absolute;
+	top: -4rem;
+
+	-webkit-animation: slide 0.5s forwards;
+	-webkit-animation-delay: 2s;
+	animation: slide 1s forwards;
+	animation-delay: 0.5s;
+}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.flexAlignCenter {
+	display: flex;
+	align-items: center;
+}
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+}
+@-webkit-keyframes slide {
+	100% {
+		top: 2rem;
+	}
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes slide {
+	100% {
+		top: 2rem;
+	}
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*  NAVBAR */
+
+* {
+	box-sizing: border-box;
+}
+input:focus,
+textarea:focus {
+	outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+	font-family: 'Nunito', sans-serif;
+	overflow: hidden;
+	max-height: 100vh;
+	max-width: 100vw;
 }
 
-.App-link {
-  color: #61dafb;
+.jobifyBackGround {
+	height: 100vh;
+	width: 100vw;
+	background-image: url('./assets/images/JobifyBgSm.png');
+	background-size: cover;
+}
+.overflowHidden {
+	overflow-y: hidden;
+}
+.overFlowing {
+	overflow-y: scroll;
+	height: 100%;
+	margin-bottom: 10rem;
+}
+/* input bg */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadowo9: 0 0 0 30px white inset !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 100px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--lightBgMain);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #bdbdbd;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #888;
+}
+
+.addSupervisorButton {
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	padding: 0.4rem 1rem;
+	color: #fff;
+	background: #4d7bf3;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+}
+.addSupervisorButton:hover {
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 19px;
+	padding: 0.4rem 1rem;
+	color: #fff;
+	background: var(--blueButtonColorHover);
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/* Employer Create Post Modal */
+.modalBackground {
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	width: 100%;
+	z-index: 5;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.modalContainer {
+	width: 40vw;
+	background: #fff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+	border-radius: 5px;
+	min-width: 600px;
+}
+.modalContainerInner {
+	background: #fff;
+	padding: 2rem;
+	z-index: 6;
+}
+.modalTitleBlock {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0rem 1.6rem;
+}
+.closeModal {
+	display: flex;
+	justify-content: flex-end;
+	font-size: 1.5rem;
+	padding: 0rem 0rem 0rem 1rem;
+	color: rgba(0, 0, 0, 0.8);
+	cursor: pointer;
+}
+
+.modalCreatePostTitle {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 27px;
+
+	color: #293957;
+}
+.createPostTitle {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 14px;
+	line-height: 19px;
+	text-transform: uppercase;
+	color: #34475c;
+	margin-bottom: 1rem;
+}
+
+.modalWorkTypeBlock {
+	padding: 0.8rem 1.6rem;
+}
+
+.typeOfWorkInput {
+	padding: 0.5rem;
+	background: #ffffff;
+	border: 1px solid #d8d8d8;
+	box-shadow: 5px 4px 19px rgba(0, 0, 0, 0.01);
+	border-radius: 5px;
+	width: 100%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+}
+.typeOfWorkInput:hover {
+	padding: 0.5rem;
+	background: #ffffff;
+	border: 1px solid #91ca96;
+	box-shadow: 5px 4px 19px rgba(0, 0, 0, 0.01);
+	border-radius: 5px;
+	width: 100%;
+	cursor: pointer;
+}
+.typeOfWorkInputSm {
+	padding: 0.15rem;
+	background: #ffffff;
+	border: 1px solid #d8d8d8;
+	box-shadow: 5px 4px 19px rgba(0, 0, 0, 0.01);
+	border-radius: 5px;
+	width: 100%;
+	cursor: pointer;
+	text-align: center;
+}
+.typeOfWorkInputSm:hover {
+	padding: 0.15rem;
+	background: #ffffff;
+	border: 1px solid #91ca96;
+	box-shadow: 5px 4px 19px rgba(0, 0, 0, 0.01);
+	border-radius: 5px;
+	width: 100%;
+	cursor: pointer;
+	text-align: center;
+}
+.typeOfWorkInput:focus {
+	padding: 0.5rem;
+	background: #ffffff;
+	border: 1px solid #91ca96;
+	box-shadow: 5px 4px 19px rgba(0, 0, 0, 0.01);
+	border-radius: 5px;
+	width: 100%;
+}
+.jobDetailsBlock {
+	padding: 0.8rem 1.6rem;
+}
+.jobDetailsGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	column-gap: 1rem;
+	row-gap: 1rem;
+}
+.jobDetailsTitle {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+	text-align: left;
+	color: #000000;
+}
+.jobDetailsBlockButton {
+	padding: 0.8rem 1.6rem;
+	display: flex;
+	justify-content: flex-end;
+}
+.jobDetailsBlockButton2 {
+	padding: 0.8rem 1.6rem;
+	display: flex;
+	justify-content: space-between;
+}
+.modalPostNext {
+	padding: 1rem 2rem;
+	background: #91ca96;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.modalPostNext:hover {
+	padding: 1rem 2rem;
+	background: #69926d;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.modalPostNextSm {
+	padding: 0.5rem 1rem;
+	background: #91ca96;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.modalPostNextSm:hover {
+	padding: 0.5rem 1rem;
+	background: #91ca96;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.modalSpinnerButton {
+	padding: 0.5rem 3rem;
+	background: #91ca96;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.modalPostBack {
+	padding: 1rem 2rem;
+	background: #4d7bf3;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.modalPostBack:hover {
+	padding: 1rem 2rem;
+	background: #426acf;
+	border-radius: 25px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 16px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.modalPostTimeBlock {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	column-gap: 3rem;
+	padding: 0 1.5rem;
+}
+
+.modalPostSmallTitle {
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	color: #000000;
+}
+.numberRatingContainer {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem 0;
+}
+.ratingInactive {
+	border: 2px solid #91ca96;
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 27px;
+	text-align: center;
+	color: #91ca96;
+	cursor: pointer;
+	border-radius: 50%;
+	padding: 1.2rem 1.5rem;
+}
+.ratingInactive:hover {
+	border: 2px solid #91ca96;
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 27px;
+	text-align: center;
+	color: #91ca96;
+	background-color: #91ca96;
+	cursor: pointer;
+	border-radius: 50%;
+	padding: 1.2rem 1.5rem;
+}
+.ratingActive {
+	border: 2px solid #91ca96;
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 27px;
+	text-align: center;
+	color: #fff;
+	background-color: #91ca96;
+	cursor: pointer;
+	border-radius: 50%;
+	padding: 1.2rem 1.5rem;
+}
+
+.postRatingBanFavContainer {
+	display: flex;
+	justify-content: space-around;
+}
+.postSubmitRatingButton {
+	display: flex;
+	justify-content: center;
+}
+/* Modal Posts */
+
+.modalPostContainerOuter {
+	width: 95%;
+	margin: auto;
+	height: 70vh;
+}
+.modalPostContainerInner {
+	width: 90%;
+	margin: auto;
+}
+.modalPostTitle {
+	font-weight: 800;
+	font-size: 30px;
+	line-height: 41px;
+	/* identical to box height */
+	margin: 1rem 0;
+	color: #000000;
+}
+.modalPostUpperBlock {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0 0 1.4rem 0;
+	margin: 0 0 1.4rem 0;
+	border-bottom: 1px solid #e0e0e0;
+}
+.modalPostUpperBlockLeft {
+	display: flex;
+	justify-content: flex-start;
+}
+.modalCompanyTitleBlock {
+	display: flex;
+	flex-direction: column;
+	margin-left: 1rem;
+}
+
+.modalPostCompanyName {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 22px;
+	color: #617489;
+}
+.modalPostSupervisor {
+	font-style: normal;
+	font-weight: 900;
+	font-size: 10px;
+	line-height: 14px;
+	letter-spacing: 0.08em;
+	color: #828282;
+	text-transform: uppercase;
+}
+
+.modalPostSupervisorName {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 13px;
+	line-height: 18px;
+	color: #617489;
+}
+.modalPostSupervisorName {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 13px;
+	line-height: 18px;
+	color: #617489;
+}
+.modalPostUpperBlockRight {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.modalPostBioBlock {
+	padding: 0 0 1.4rem 0;
+	margin: 0 0 1.4rem 0;
+	border-bottom: 1px solid #e0e0e0;
+}
+.modalPostCompanyInfoTitle {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 22px;
+	color: #000000;
+	margin-bottom: 0.8rem;
+}
+.modalPostCompanyInfoText {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 20px;
+	color: #000000;
+	max-width: 40vw;
+}
+.modalPostRequiredItemsGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 1rem;
+	column-gap: 1rem;
+}
+.requiredItem {
+	display: flex;
+	width: 100%;
+	/* justify-content: space-between; */
+	align-items: center;
+}
+.requiredItem i {
+	margin-right: 1.2rem;
+}
+.modalPostJobDetailsBlock {
+	display: flex;
+	justify-content: space-between;
+	background: #f8f8fe;
+	padding: 1.2rem;
+	margin-bottom: 1.4rem;
+}
+
+.modalPostJobDetailsBlockLeft {
+	display: flex;
+	flex-direction: column;
+}
+.modalPostJobDetailsBlockLeftTop {
+	margin-bottom: 1.4rem;
+}
+.modalPostDate {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 14px;
+	line-height: 19px;
+	text-transform: uppercase;
+	color: #828282;
+	padding: 0 0 0.4rem 0;
+}
+.modalPostTime {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+	line-height: 18px;
+	text-transform: uppercase;
+	color: #34475c;
+	padding-bottom: 0.4rem;
+}
+.modalPostTimeBreak {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+	line-height: 18px;
+	color: #34475c;
+	padding-bottom: 0.4rem;
+}
+.modalPostPayTitle {
+	font-style: normal;
+	font-weight: 900;
+	font-size: 9px;
+	line-height: 12px;
+	letter-spacing: 0.08em;
+	color: #828282;
+	text-transform: uppercase;
+	padding-bottom: 0.4rem;
+}
+.postModalRate {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 27px;
+	color: #617489;
+}
+.modalPostTotalRate {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 27px;
+	color: #91ca96;
+}
+.modalPostJobDetailsBlockLeftBottom {
+	display: flex;
+}
+.modalPostJobDetailsBlockLeftBottomRight {
+	margin-left: 2rem;
+}
+.modalPostWorkType {
+	border: 1px solid #617489;
+	padding: 0.3rem 0.8rem;
+
+	border-radius: 15px;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 11px;
+	line-height: 15px;
+	text-align: center;
+
+	color: #617489;
+}
+
+.modalPostTotalTime {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 14px;
+	line-height: 19px;
+	/* identical to box height */
+
+	text-align: center;
+	text-transform: uppercase;
+
+	color: #617489;
+}
+.modalPostDetailsBlock {
+	margin-bottom: 2rem;
+}
+.modalPostMapAddress {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 18px;
+	color: #5aa9ff;
+}
+.modalPostButtonBlock {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 1.5rem 0;
+}
+.modalPostButton {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 18px;
+	line-height: 25px;
+	padding: 0.5rem 3rem;
+
+	color: #ffffff;
+	background: #91ca96;
+	border-radius: 25px;
+	cursor: pointer;
+}
+/* Accepted Work Modal */
+.acceptModalClose {
+	display: flex;
+	justify-content: flex-end;
+}
+.acceptModalContainer {
+	width: 40vw;
+	background: #fff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+	border-radius: 5px;
+}
+
+.modalAcceptedInner {
+	margin: auto;
+	width: 90%;
+	padding: 1.5rem;
+}
+.modalFindWorkMobile {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.modalAcceptedTitle {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 30px;
+	line-height: 41px;
+	color: #000000;
+	margin-bottom: 1rem;
+}
+.modalAcceptedSubTitle {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 24px;
+	line-height: 33px;
+	color: #91ca96;
+	margin-bottom: 2rem;
+}
+.modalAcceptedText {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 22px;
+	color: #4f4f4f;
+	margin-bottom: 2rem;
+}
+.modalAcceptButtonBlock {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.modalAcceptCancelButton {
+	font-weight: 800;
+	font-size: 14px;
+	line-height: 19px;
+	cursor: pointer;
+	color: #828282;
+	margin-right: 1.2rem;
+}
+.modalAcceptButton {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 18px;
+	line-height: 25px;
+	padding: 0.5rem 3rem;
+	color: #ffffff;
+	background: #91ca96;
+	border-radius: 25px;
+	cursor: pointer;
+}
+.postTypeSelectContainer {
+	display: flex;
+}
+.postTypeSelectButtonLeft {
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--blueButtonColor);
+	border-radius: 5px 0 0 5px;
+	cursor: pointer;
+}
+.postTypeSelectButtonLeft:hover {
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--blueButtonColor);
+	border-radius: 5px 0 0 5px;
+	color: #ffffff;
+	background: var(--blueButtonColor);
+}
+.postTypeSelectButtonLeftActive {
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--blueButtonColor);
+	border-radius: 5px 0 0 5px;
+	cursor: pointer;
+	color: #ffffff;
+	background: var(--blueButtonColor);
+}
+
+.postTypeSelectButtonRight {
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--blueButtonColor);
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+}
+.postTypeSelectButtonRight:hover {
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--blueButtonColor);
+	border-radius: 0 5px 5px 0;
+	color: #ffffff;
+	background: var(--blueButtonColor);
+}
+.postTypeSelectButtonRightActive {
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--blueButtonColor);
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	color: #ffffff;
+	background: var(--blueButtonColor);
+}
+.requestImg {
+	height: 60px;
+	width: 60px;
+	border-radius: 100%;
+}
+.requestImgSm {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	margin-right: 5px;
+}
+.favoritesContainer {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.4rem 1.6rem;
+}
+.favoritesDivider {
+	width: 85%;
+	margin: auto;
+
+	border-bottom: 1px rgba(51, 51, 51, 0.158) solid;
+	margin-bottom: 1rem;
+}
+
+.favoritesContainerText {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	padding-left: 14px;
+}
+.favoritesText {
+	color: #617489;
+	font-size: 14px;
+	font-weight: bold;
+}
+.buttonsContainer {
+	display: flex;
+
+	justify-content: space-between;
+	padding-top: 10px;
+}
+.acceptButton {
+	background-color: #91ca96;
+	padding: 5px 15px;
+	border-radius: 50px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.acceptButton:hover {
+	background-color: #69926d;
+	padding: 5px 15px;
+	border-radius: 50px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.declineButton {
+	background-color: red;
+	padding: 2px 15px;
+	border-radius: 50px;
+	margin-right: 5;
+}
+.buttontext {
+	color: #fff;
+	font-size: 14px;
+}
+.homeCalendarCreatePostEmp {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 5px 5px;
+	color: #fff;
+	background-color: #eb5757;
+	border-radius: 5px;
+	border: 2px solid #eb5757;
+	margin-left: 5px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.favoriteToggleButton {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 5px 5px;
+	color: #fff;
+	background-color: #617489;
+	border-radius: 5px;
+	border: 2px solid #617489;
+
+	cursor: pointer;
+	transition: 0.5s;
+	margin-bottom: 0.5rem;
+}
+.favoriteToggleButton:hover {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 5px 5px;
+	color: #fff;
+	background-color: #27407e;
+	border-radius: 5px;
+	border: 2px solid #27407e;
+
+	cursor: pointer;
+	transition: 0.5s;
+}
+.homeCalendarCreatePostEmp:hover {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 5px 5px;
+	color: #fff;
+	background-color: rgb(204, 34, 34);
+	border-radius: 5px;
+	border: 2px solid rgb(204, 34, 34);
+	margin-left: 5px;
+	cursor: pointer;
+}
+.homeCalendarCreatePostEmpAdd {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 5px 5px;
+	color: #fff;
+	background-color: #91ca96;
+	border-radius: 5px;
+	border: 2px solid #91ca96;
+	margin-left: 5px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.homeCalendarCreatePostEmpAdd:hover {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 5px 5px;
+	color: #fff;
+	background-color: #69926d;
+	border-radius: 5px;
+	border: 2px solid #69926d;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.shiftStatusBox {
+	border: 2px solid #91ca96;
+	border-radius: 5px;
+	padding: 5px;
+	color: #91ca96;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+.backButton {
+	background-color: #4d7bf3;
+	padding: 5px 25px;
+	z-index: 5;
+	border-radius: 50;
+	margin-top: 10px;
+}
+.createPostButtonText {
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+}
+.buttonContainer {
+	height: 100vh;
+	width: 88vw;
+	left: 12vw;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@media only screen and (max-width: 601px) {
+	/* Login */
+
+	.modalContainer {
+		width: 95%;
+		margin: auto;
+		min-width: 0px;
+	}
+	.modalContainerInner {
+		padding: 0.5rem 0.25rem;
+		min-width: 90%;
+	}
+	.modalTitleBlock,
+	.favoritesContainer,
+	.modalWorkTypeBlock,
+	.jobDetailsBlock,
+	.jobDetailsBlockButton {
+		padding: 0.4rem 0.5rem;
+	}
+	.jobifyBackGround {
+		height: 100vh;
+		width: 100vw;
+		background-image: url('./assets/images/JobifyMobile.png');
+		background-size: cover;
+	}
+	.buttonContainer {
+		height: 100vh;
+		width: 100vw;
+		left: 0;
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
