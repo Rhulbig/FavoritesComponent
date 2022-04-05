@@ -1001,6 +1001,7 @@ input:-webkit-autofill:active {
 		width: 100vw;
 		background-image: url('./assets/images/JobifyMobile.png');
 		background-size: cover;
+		background-repeat: no-repeat;
 	}
 	.buttonContainer {
 		height: 100vh;
